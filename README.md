@@ -9,6 +9,10 @@ Alunos:
   
   
   Luiz Felipe Conrado                - 18010826
+  
+  
+  Thiago Okuma
+  
 
 Dentro da aba application.properties, temos as linhas necessárias de código que irão conectar nosso banco de dados com os demais arquivos. Sendo o banco de dados PgAdmin4, realiza-se a criação de um database de nome editora visto na linha 6 desta aba (application.properties).
 
