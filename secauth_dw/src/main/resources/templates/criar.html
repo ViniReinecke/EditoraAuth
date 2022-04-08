@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body bgcolor="MediumSpringGreen">
+    <form action="#" th:action="@{/artigos}" th:object="${artigo}" method="post">
+        
+            <div>
+            <caption><center><font size="12" face="Arial" color="MediumBlue">Cadastro de Artigos</caption></center></font>
+            </div>
+        <div>    
+       <center><caption><font size="8" face="Arial" color="MediumBlue">Complete as informacoes</caption></center></font>
+       </div>
+
+    <label for="titulo"><center><font size="6">Titulo do Livro:</label>
+        <input type="text" th:field="*{titulo}" id="titulo" placeholder="Escreva o Titulo">
+        <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></span>
+        <br>
+        <br>
+        <label for="resumo">Resumo Do Livro:</label>
+        <input type="text" th:field="*{resumo}" id="resumo" placeholder="Descreva o Resumo">
+        <span th:if="${#fields.hasErrors('resumo')}" th:errors="*{resumo}"></span>
+        <br>
+        <br>
+        <label for="publicado">Status de Publicacao</label>
+        <input type="checkbox" th:field="*{publicado}" id="publicado">
+        <span th:if="${#fields.hasErrors('publicado')}" th:errors="*{publicado}"></span>
+        <br>
+        <br>
+        <input type="submit" value="Criar">   
+    </form>
+</body>
+</html>

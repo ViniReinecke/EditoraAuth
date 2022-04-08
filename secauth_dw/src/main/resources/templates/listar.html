@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body bgcolor="MediumSpringGreen">
+    <div th:switch="${artigos}">
+        <h2 th:case="null">Sem nada para mostrar!</h2>
+            <div th:case="*">
+                <h2><center><font size="6">Artigos</font></center></h2>
+                <style>
+                    table {
+                      border-collapse: separate;
+                      border-spacing: 0 15px;
+                    }
+                    th {
+                      background-color: #0004f0;
+                      color: rgb(170, 245, 127);
+                    }
+                    th,
+                    td {
+                      width: 150px;
+                      text-align: center;
+                      border: 1px solid rgb(0, 0, 0);
+                      padding: 5px;
+                    }
+                    h2 {
+                      color: #2500f5;
+                    }
+                  </style>
+               <center> <table> 
+                    <thead>
+                        <tr>
+                            <th><font color="white">Título</font></th>
+                            <th><font color="white">Resumo</font></th>
+                            <th><font color="white">Publicado</font></th>
+                            <th><font color="white">Editar</font></th>
+                            <th><font color="white">Deletar</font></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="artigo : ${artigos}">
+                        <td th:text="${artigo.titulo}"></td>
+                        <td th:text="${artigo.resumo}"></td>
+                        <td th:text="${artigo.publicado}"></td>
+                        <td><a th:href="@{/artigos/{id}/editar(id=${artigo.id})}"><i class="fa fa-edit" style="font-size:24px"></a></td>
+                        <!-- <td><a th:formaction="@{/artigos/{id}(id=${artigo.id})}" th:formmethod="delete">Delete</a></td> -->
+                        <td><a th:href="@{/artigos/{id}/deletar(id=${artigo.id})}"><i class="fa fa-trash" style="font-size:24px"></i></a></td>
+                    </tr>
+                </tbody> </center>
+            </table> 
+        </div>      
+        <center><p><a th:href="@{/artigos/criar}"><i class="fa fa-plus"></i></i> Novo artigo</cemter></a></p>
+    </div>
+</body>
+</html>
